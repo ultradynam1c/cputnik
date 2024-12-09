@@ -13,13 +13,13 @@ license=("GPL")
 depends=('libxpm')
 optdepends=('xorg-xkill: for right click - killing apps by window'
             'gnome-system-monitor: for left click - start system monitor')
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 #source=("http://dockapps.windowmaker.org/download.php/id/576/cputnik-$pkgver.tar.gz")
 source=("cputnik-0.2.0.tar.gz")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  make
+  make CFLAGS="-fcommon -Wall -Os"
  }
 
 package() {
